@@ -33,4 +33,16 @@ fun main(args: Array<String>) {
 
     val intNumber = 123   // defaults to Int
     val doubleNumber = 1.0   // defaults to Double
+
+
+    /**
+     * Kotlin also has String, Char, and Boolean data types, which we always declare with the implicit form
+     */
+    val stringValue = "Bill"
+    val charValue = 'c'
+    val booleanValue = true
+
+    println(stringValue)
+    println(charValue)
+    println(booleanValue)
 }
