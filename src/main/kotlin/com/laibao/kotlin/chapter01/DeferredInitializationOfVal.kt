@@ -7,13 +7,15 @@ package com.laibao.kotlin.chapter01
 fun main(args: Array<String>) {
 
     val name: String
+
     val num: Int
 
-    //val r = (1..10).shuffled().first()
+    val r = (1..10).shuffled().first()
 
-    // assign `name` and `num`
-    //name = if (r % 2 == 0) "Alvin" else "Alexander"
-    //num = r
+    //assign `name` and `num`
+    name = if (r % 2 == 0) "jinge" else "alading"
 
-    //println("name = $name, num = $num")
+    num = r
+
+    println("name = $name, num = $num")
 }
