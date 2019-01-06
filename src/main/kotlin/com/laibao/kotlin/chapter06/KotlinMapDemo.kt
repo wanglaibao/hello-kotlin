@@ -28,4 +28,29 @@ fun main(args: Array<String>) {
     println(map4.javaClass.kotlin)
     println(map5.javaClass)
     println(map5.javaClass.kotlin)
+
+
+    /**
+     * Iterating over a map
+     */
+
+    for ((k,v) in map1) {
+        println("the key is $k and the value is $v")
+    }
+    println()
+    for ((k,v) in map2) {
+        println("the key is $k and the value is $v")
+    }
+    println()
+    for ((k,v) in map3) {
+        println("the key is $k and the value is $v")
+    }
+    println()
+    for ((k,v) in map4) {
+        println("the key is $k and the value is $v")
+    }
+    println()
+    for ((k,v) in map5) {
+        println("the key is $k and the value is $v")
+    }
 }
