@@ -1,43 +1,50 @@
 package com.laibao.kotlin.chapter03
 
 fun main(args: Array<String>) {
-    val c = catFactory()
-    // Indeed prints "Cat"
-    println(c.name)
 
     val animalTypes = listOf("dog", "dog", "cat", "dog", "cat", "cat")
 
-    for (animal in animalTypes) {
-        val c = animalFactory(animal)
-        println(c.name)
+    val factory = AnimalFactory()
+
+    for (element in animalTypes) {
+        val animal = factory.createAnimal(element)
+        println("${animal.id} - ${animal.name}")
     }
 }
 
 interface Animal {
+    val id:Int
     val name : String
 }
 
-class Cat : Animal{
+class Cat(override val id: Int) : Animal{
     override val name = "Cat"
 }
 
 
-class Dog : Animal{
+class Dog(override val id: Int) : Animal{
     override val name = "Dog"
 }
 
 
-fun catFactory() : Cat = Cat()
-
 
 fun animalFactory(animalType: String) : Animal {
-    return  when(animalType.toLowerCase()) {
-                    "cat" -> Cat()
-                    "dog" -> Dog()
+    var counter = 0
+    return  when(animalType.trim().toLowerCase()) {
+                    "cat" -> Cat(++counter)
+                    "dog" -> Dog(++counter)
                     else -> throw RuntimeException("Unknown animal $animalType")
     }
 }
 
 
-
-
+class AnimalFactory {
+    var counter = 0
+    fun createAnimal(animalType: String) : Animal {
+        return when(animalType.trim().toLowerCase()) {
+            "cat" -> Cat(++counter)
+            "dog" -> Dog(++counter)
+            else -> throw RuntimeException("Unknown animal $animalType")
+        }
+    }
+}
