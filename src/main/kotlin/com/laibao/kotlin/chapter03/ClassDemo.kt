@@ -4,6 +4,14 @@ fun main(args: Array<String>) {
 
     val f = Foo()
     val p = Person("Bill", "Panner")
+    val box = Box<Cat1>()
+
+    // This will work
+    box.put(Cat1())
+    // This will always return a Cat, because that's what our box holds
+    val cat = box.get()
+    // This won't work, String is not a Cat
+    //box.put("Cat")
 }
 
 class Foo
