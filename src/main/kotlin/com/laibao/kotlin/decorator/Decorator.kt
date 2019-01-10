@@ -15,12 +15,12 @@ fun main(args: Array<String>) {
 
 
 
-    val HappySadMap = HappySadMap<String,String>()
-    happyMap["alading"] = "阿拉丁"
-    happyMap["alading"] = "阿拉丁"
+    val happy = HappyMap<String,String>()
+    happy["alading"] = "阿拉丁"
+    happy["alading"] = "阿拉丁"
 }
 
-class HappyMap<K,V>: HashMap<K,V> (){
+class HappyMap0<K,V>: HashMap<K,V> (){
     override fun put(key: K, value: V): V? {
         return super.put(key, value).apply {
             this?.let {
@@ -30,7 +30,7 @@ class HappyMap<K,V>: HashMap<K,V> (){
     }
 }
 
-class SadMap<K, V>: HashMap<K, V>() {
+class SadMap0<K, V>: HashMap<K, V>() {
     override fun remove(key: K): V? {
         return super.remove(key).apply {
             this?.let {
@@ -40,11 +40,23 @@ class SadMap<K, V>: HashMap<K, V>() {
     }
 }
 
-
-class HappySadMap<K, V>(private val map: MutableMap<K, V> = mutableMapOf()) : MutableMap<K, V> by map {
+/**
+ *  通过委托来实现装饰器模式
+ */
+class HappyMap<K, V>(private val map: MutableMap<K, V> = mutableMapOf()) : MutableMap<K, V> by map {
     override fun put(key: K, value: V): V? {
         return map.put(key, value).apply {
             this?.let { println("Yay! $key") }
         }
+    }
+}
+
+/**
+ *  通过委托来实现装饰器模式
+ */
+class SadMap<K, V>(private val map: MutableMap<K, V> = mutableMapOf()) : MutableMap<K, V> by map {
+    override fun remove(key: K): V? {
+        println("Okay...")
+        return map.remove(key)
     }
 }
