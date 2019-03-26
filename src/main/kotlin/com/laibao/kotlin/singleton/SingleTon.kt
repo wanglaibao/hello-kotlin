@@ -1,8 +1,9 @@
 package com.laibao.kotlin.singleton
 
-class SingleTon {
+class SingleTon private constructor(){
+
     companion object {
-        fun get():SingleTon {
+        fun apply():SingleTon {
             return Holder.instance
         }
     }
