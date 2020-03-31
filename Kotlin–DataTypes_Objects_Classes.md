@@ -332,3 +332,11 @@ They can also be used without a name, as shown in the following code
 Don't be confused by this syntax. The Cupcake value without parenthesis is the companion
 object; Cupcake() is an instance.
 ``
+
+
+### Type alias
+
+``
+Type alias provides a way to define names of types that already exist. Type alias can help to make
+complex types easier to read, and can also provide other hints.
+``
