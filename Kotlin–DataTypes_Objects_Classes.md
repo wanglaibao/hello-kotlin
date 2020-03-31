@@ -178,3 +178,157 @@ My recommendation is that you should always start with an interface.
 Interfaces are more straightforward and cleaner; they also allow a more modular design.
 In the case that data initialization/constructors are needed, move to abstract/open.
 ```
+
+
+### Objects
+
+* Objects are natural singletons
+
+``
+A singleton is a type that has just one and only one instance and every object in Kotlin is a singleton;
+``
+
+* Object expressions don't need to extend any type
+
+```
+    fun main(args: Array<String>) {
+        val expression = object {
+            val property = ""
+            fun method(): Int {
+                println("from an object expressions")
+                return 42
+            }
+        }
+
+        val i = "${expression.method()} ${expression.property}"
+        println(i)
+    }
+
+
+    In this case, the expression value is an object that doesn't have any specific type. We can access its
+    properties and functions.
+```
+
+
+* object expressions without type can be used only locally, inside a
+  method, or privately, inside a class
+
+
+```
+    class Outer {
+        val internal = object {
+            val property = ""
+        }
+    }
+
+    fun main(args: Array<String>) {
+        val outer = Outer()
+        println(outer.internal.property) // Compilation error: Unresolved reference: property
+    }
+
+
+    In this case, the property value can't be accessed
+```
+
+### Object declarations
+
+``
+An object can also have a name. This kind of object is called an object declaration:
+Objects also can extend other types: such as interface,abstract class, open class
+``
+
+
+### Companion objects
+
+``
+Objects declared inside a class/interface can be marked as companion objects;
+methods inside the companion object can be used directly, using the class name without instantiating it
+``
+
+```
+    class Cupcake(flavour: String) : BakeryGood(flavour), Bakeable {
+
+        override fun name(): String {
+            return "cupcake"
+        }
+
+        companion object {
+            fun almond(): Cupcake {
+                return Cupcake("almond")
+            }
+
+            fun cheese(): Cupcake {
+                return Cupcake("cheese")
+            }
+        }
+    }
+
+```
+
+``
+Companion object's methods can't be used from instances
+``
+
+```
+    fun main(args: Array<String>) {
+        val myAlmondCupcake = Cupcake.almond()
+        val myCheeseCupcake = myAlmondCupcake.cheese() //Compilation error: Unresolved reference: cheese
+    }
+
+```
+
+``
+Companion objects can be used outside the class as values with the name Companion
+``
+
+```
+    fun main(args: Array<String>) {
+        val factory: Cupcake.Companion = Cupcake.Companion
+    }
+
+```
+
+``
+Alternatively, a Companion object can have a name
+``
+
+```
+    class Cupcake(flavour: String) : BakeryGood(flavour), Bakeable {
+
+        override fun name(): String {
+            return "cupcake"
+        }
+
+        companion object Factory {
+            fun almond(): Cupcake {
+                return Cupcake("almond")
+            }
+
+            fun cheese(): Cupcake {
+                return Cupcake("cheese")
+            }
+
+        }
+    }
+
+    fun main(args: Array<String>) {
+        val factory: Cupcake.Factory = Cupcake.Factory
+    }
+
+```
+
+``
+They can also be used without a name, as shown in the following code
+``
+
+```
+    fun main(args: Array<String>) {
+        val factory: Cupcake.Factory = Cupcake
+    }
+
+```
+
+``
+Don't be confused by this syntax. The Cupcake value without parenthesis is the companion
+object; Cupcake() is an instance.
+``

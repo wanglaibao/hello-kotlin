@@ -29,6 +29,7 @@ class Cupcake(val flavour: String) {
     }
 }
 
+/*
 fun main() {
     val veryBasic: VeryBasic = VeryBasic()
     println(veryBasic)
@@ -71,3 +72,4 @@ fun main() {
     println(myCheeseCupcake.eat())
     println(myCaramelCupcake.eat())
 }
+        */
