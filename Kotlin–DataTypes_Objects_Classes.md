@@ -89,3 +89,92 @@ Remember that an object expression is an instance, so it can be used to declare 
 
     mario.eats(food)
 ```
+
+
+### Interfaces
+
+``
+The open and abstract classes are great for creating hierarchies, but sometimes they aren't enough
+We also need interface type,An interface is a type that defines a behavior,
+In an interface, all methods are open and a method with no implementation doesn't need an abstract
+modifier
+``
+
+
+### the differences between an open/abstract class and an interface
+
+* similarities
+
+``
+Both are types,
+Both define behaviors as methods,
+Although open classes can be instantiated directly, neither abstract classes nor interfaces can
+``
+
+
+* differences
+``
+A class can extend just one class (open or abstract), but can extend many interfaces;
+An open/abstract class can have constructors;
+An open/abstract class can initialize its own values;
+An interface's values must be initialized in the classes that extend the interface;
+An open class must declare the methods that can be overridden as open;
+An abstract class could have both open and abstract methods
+``
+
+
+### When should we use open class or abstract class or interface
+
+* Use open class when:
+
+``
+The class should be extended and instantiated
+``
+
+* Use abstract class when:
+
+``
+The class can't be instantiated;
+A constructor is needed it;
+There is initialization logic (using init blocks)
+``
+
+
+```
+    abstract class BakeryGood(val flavour: String) {
+        init {
+            println("Preparing a new bakery good")
+        }
+
+        fun eat(): String {
+            return "nom, nom, nom... delicious $flavour ${name()}"
+        }
+
+        abstract fun name(): String
+
+    }
+```
+
+
+* Use interface when
+
+``
+Multiple inheritances must be applied;
+No initialized logic is needed;
+As with abstract classes, object expressions can be used with interfaces
+``
+
+```
+    val somethingFried = object : Fried {
+            override fun fry(): String {
+                return "TEST_3"
+            }
+    }
+
+```
+
+```
+My recommendation is that you should always start with an interface.
+Interfaces are more straightforward and cleaner; they also allow a more modular design.
+In the case that data initialization/constructors are needed, move to abstract/open.
+```
