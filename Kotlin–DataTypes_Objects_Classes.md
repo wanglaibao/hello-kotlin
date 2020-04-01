@@ -349,3 +349,55 @@ complex types easier to read, and can also provide other hints.
 
 
 ### The (!!) operator
+
+### Data classes
+
+``
+Creating classes whose primary purpose is to hold data is a common pattern in Kotlin;
+Kotlin has a particular kind of class for this purpose: data class
+``
+
+```
+    data class Item(val product: BakeryGood,
+                    val unitPrice: Double,
+                    val quantity: Int)
+
+```
+
+
+###  some restrictions on data class
+
+* The primary constructor should have at least one parameter
+* The primary constructor's parameters must be val or var
+* Data classes can't be abstract, open, sealed, or inner
+
+###  benefits of data classes
+
+* Canonical methods
+
+``
+Canonical methods are the methods declared in Any .
+``
+
+* The copy() method
+
+``
+Sometimes, we want to reuse values from an existing instance.
+The copy() method lets us create new instances of a data class, overriding the parameters that we want
+``
+
+
+```
+    val myItem = Item(myAlmondCupcake, 0.40, 5)
+    val mySecondItem = myItem.copy(product = myCaramelCupcake) //named parameter
+```
+
+
+* Destructuring methods
+
+``
+By convention, any instance of a data class that has a series of methods named component1() , component2()
+and so on can be used in a destructuring declaration.
+``
+
+
