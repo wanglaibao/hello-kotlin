@@ -401,3 +401,13 @@ and so on can be used in a destructuring declaration.
 ``
 
 
+### Annotations
+
+
+### Enum
+
+``
+Enum in Kotlin is a way to define a set of constant values;
+Like any object, they can extend interfaces
+Enum can also have abstract methods:
+``
