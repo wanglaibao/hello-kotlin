@@ -340,3 +340,12 @@ object; Cupcake() is an instance.
 Type alias provides a way to define names of types that already exist. Type alias can help to make
 complex types easier to read, and can also provide other hints.
 ``
+
+
+### Safe calls
+
+
+### The Elvis (?:) operator
+
+
+### The (!!) operator
